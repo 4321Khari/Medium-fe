@@ -1,15 +1,34 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { SignupInput } from "@abhishekkhari/medium-common";
+import axios from "axios";
+import { BACKEN_URL } from "../config";
 
 export const Auth = ({ type }: { type: "signin" | "signup" }) => {
+  const navigate = useNavigate();
   const [postInput, setPostInput] = useState<SignupInput>({
     name: "",
     email: "",
     password: "",
   });
-  const handleSignup = (e: React.FormEvent) => {
+  const handleSignup = async (e: React.FormEvent) => {
     e.preventDefault();
+    try {
+      const response = await axios.post(
+        `${BACKEN_URL}/api/v1/user/${type === "signup" ? "signup" : "signin"}`,
+        postInput
+      );
+      const token = response.data.jwt;
+      console.log(
+        "response",
+        response,
+        `${BACKEN_URL}/api/v1/user/${type === "signup" ? "signup" : "signin"}`
+      );
+      localStorage.setItem("JWT", token);
+      navigate("/blogs");
+    } catch (err) {
+      console.log(err);
+    }
   };
   return (
     <form
