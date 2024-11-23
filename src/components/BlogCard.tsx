@@ -12,9 +12,9 @@ export const BlogCard = ({
   publishedDate,
 }: BlogCardProps) => {
   return (
-    <div className=" border-b ml-2  mt-2">
+    <div className=" border-b ml-2  mt-2 cursor-pointer">
       <div className="text-sm font-semibold mt-2 flex   items-centers ">
-        <Avator name={authorName} />
+        <Avator name={authorName} size="small" />
         <div className=" pl-2 flex items-center   justify-center">
           {authorName}
           <div className=" flex flex-col justify-center   pl-2 pt-1   items-center ">
@@ -38,11 +38,17 @@ export const BlogCard = ({
   );
 };
 
-export function Avator({ name, size }: { name: string; size?: number }) {
+export function Avator({
+  name,
+  size,
+}: {
+  name: string;
+  size?: "small" | "big";
+}) {
   return (
     <div
       className={` flex items-center justify-center ${
-        size ? `w-${size} h-${size}` : "w-7 h-7"
+        size == "big" ? `w-10 h-10` : "w-7 h-7"
       }   overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600`}
     >
       <span className="font-medium  text-gray-600 dark:text-gray-300">

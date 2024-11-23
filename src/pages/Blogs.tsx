@@ -5,13 +5,17 @@ import { useBlogs } from "../hooks";
 export const Blogs = () => {
   const { loading, blogs } = useBlogs();
   if (loading) {
-    return <div>Loading...</div>;
+    return (
+      <div className=" flex justify-center items-center h-screen font-semibold text-sm">
+        Loading...
+      </div>
+    );
   }
   return (
     <>
       <AppBar />
       <div className=" flex  justify-evenly">
-        <div className="   ">
+        <div className="">
           {blogs.map((item) => (
             <BlogCard
               authorName={item.author.name}
