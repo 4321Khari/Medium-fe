@@ -18,7 +18,8 @@ export const Blogs = () => {
         <div className="">
           {blogs.map((item) => (
             <BlogCard
-              authorName={item.author.name}
+              id={item.id}
+              authorName={item.author.name || "A"}
               publishedDate="Dec 19 2024"
               title={item.title}
               content={item.content}
