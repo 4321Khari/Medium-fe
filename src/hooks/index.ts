@@ -16,7 +16,7 @@ export const useBlog = ({ id }: { id: string }) => {
   useEffect(() => {
     const token = localStorage.getItem("JWT");
     axios
-      .get(`${process.env. REACT_APP_BACKEND_URL}/api/v1/blog/${id}`, {
+      .get(`${import.meta.env.VITE_BACKEND_URL}/api/v1/blog/${id}`, {
         headers: { Authorization: token },
       })
       .then((res) => {
@@ -33,7 +33,7 @@ export const useBlogs = () => {
   useEffect(() => {
     const token = localStorage.getItem("JWT");
     axios
-      .get(`${process.env. REACT_APP_BACKEND_URL}/api/v1/blog/bulk`, {
+      .get(`${import.meta.env.VITE_BACKEND_URL}/api/v1/blog/bulk`, {
         headers: { Authorization: token },
       })
       .then((res) => {
