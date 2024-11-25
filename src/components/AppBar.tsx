@@ -1,9 +1,21 @@
 import { Link } from "react-router-dom";
 import { Avator } from "./BlogCard";
+import { useEffect, useState } from "react";
 
 export const AppBar = () => {
+  const [name, setName] = useState<string>();
+  useEffect(() => {
+    const userName = localStorage.getItem("USER");
+
+    if (userName) {
+      const user = JSON.parse(userName);
+      console.log("username", user);
+
+      setName(user);
+    }
+  }, []);
   return (
-    <div className=" border-b flex justify-between  px-10  py-3 ">
+    <div className=" border-b flex justify-between   px-10  py-3 ">
       <div className=" text-xl flex items-center font-bold">WriteSphere</div>
       <div className="flex">
         <Link to={"/publish"}>
@@ -14,7 +26,7 @@ export const AppBar = () => {
             Publish
           </button>
         </Link>
-        <Avator name="A" size={"big"} />
+        <Avator name={name || "A"} size={"big"} />
       </div>
     </div>
   );

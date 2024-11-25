@@ -20,13 +20,10 @@ export const Auth = ({ type }: { type: "signin" | "signup" }) => {
         postInput
       );
       const token = response.data.jwt;
-      console.log(
-        "response",
-        response,
-        `${import.meta.env.VITE_BACKEND_URL}/api/v1/user/${
-          type === "signup" ? "signup" : "signin"
-        }`
-      );
+      const user = response.data.user;
+      console.log("user", user);
+
+      localStorage.setItem("USER", JSON.stringify(user));
       localStorage.setItem("JWT", token);
       navigate("/blogs");
     } catch (err) {
