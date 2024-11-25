@@ -2,7 +2,6 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { SignupInput } from "@abhishekkhari/medium-common";
 import axios from "axios";
-import { BACKEN_URL } from "../config";
 
 export const Auth = ({ type }: { type: "signin" | "signup" }) => {
   const navigate = useNavigate();
@@ -15,14 +14,18 @@ export const Auth = ({ type }: { type: "signin" | "signup" }) => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        `${BACKEN_URL}/api/v1/user/${type === "signup" ? "signup" : "signin"}`,
+        `${process.env.BACKEN_URL}/api/v1/user/${
+          type === "signup" ? "signup" : "signin"
+        }`,
         postInput
       );
       const token = response.data.jwt;
       console.log(
         "response",
         response,
-        `${BACKEN_URL}/api/v1/user/${type === "signup" ? "signup" : "signin"}`
+        `${process.env.BACKEN_URL}/api/v1/user/${
+          type === "signup" ? "signup" : "signin"
+        }`
       );
       localStorage.setItem("JWT", token);
       navigate("/blogs");

@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { BACKEN_URL } from "../config";
 import axios from "axios";
 
 export interface Blog {
@@ -17,7 +16,7 @@ export const useBlog = ({ id }: { id: string }) => {
   useEffect(() => {
     const token = localStorage.getItem("JWT");
     axios
-      .get(`${BACKEN_URL}/api/v1/blog/${id}`, {
+      .get(`${process.env.BACKEN_URL}/api/v1/blog/${id}`, {
         headers: { Authorization: token },
       })
       .then((res) => {
@@ -34,7 +33,7 @@ export const useBlogs = () => {
   useEffect(() => {
     const token = localStorage.getItem("JWT");
     axios
-      .get(`${BACKEN_URL}/api/v1/blog/bulk`, {
+      .get(`${process.env.BACKEN_URL}/api/v1/blog/bulk`, {
         headers: { Authorization: token },
       })
       .then((res) => {

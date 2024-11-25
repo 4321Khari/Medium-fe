@@ -1,6 +1,5 @@
 import axios from "axios";
 import { AppBar } from "../components/AppBar";
-import { BACKEN_URL } from "../config";
 import { useState } from "react";
 import { CreateBlogInput } from "@abhishekkhari/medium-common";
 import { useNavigate } from "react-router-dom";
@@ -38,7 +37,7 @@ export const Publish = () => {
               console.log("postInput", postInput);
 
               const response = await axios.post(
-                `${BACKEN_URL}/api/v1/blog`,
+                `${process.env.BACKEN_URL}/api/v1/blog`,
                 postInput,
                 {
                   headers: {
