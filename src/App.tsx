@@ -8,6 +8,7 @@ import { Publish } from "./pages/Publish";
 function App() {
   return (
     <>
+      <Signup />
       <BrowserRouter>
         <Routes>
           <Route path="/signup" element={<Signup />} />
