@@ -37,7 +37,7 @@ export const Publish = () => {
               console.log("postInput", postInput);
 
               const response = await axios.post(
-                `${process.env.BACKEN_URL}/api/v1/blog`,
+                `${process.env.REACT_APP_BACKEND_URL}/api/v1/blog`,
                 postInput,
                 {
                   headers: {

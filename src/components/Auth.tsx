@@ -14,7 +14,7 @@ export const Auth = ({ type }: { type: "signin" | "signup" }) => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        `${process.env.BACKEN_URL}/api/v1/user/${
+        `${process.env. REACT_APP_BACKEND_URL}/api/v1/user/${
           type === "signup" ? "signup" : "signin"
         }`,
         postInput
@@ -23,7 +23,7 @@ export const Auth = ({ type }: { type: "signin" | "signup" }) => {
       console.log(
         "response",
         response,
-        `${process.env.BACKEN_URL}/api/v1/user/${
+        `${process.env. REACT_APP_BACKEND_URL}/api/v1/user/${
           type === "signup" ? "signup" : "signin"
         }`
       );
