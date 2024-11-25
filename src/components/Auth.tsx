@@ -20,7 +20,7 @@ export const Auth = ({ type }: { type: "signin" | "signup" }) => {
         postInput
       );
       const token = response.data.jwt;
-      const user = response.data.user;
+      const user = response.data.user.name;
       console.log("user", user.name);
 
       localStorage.setItem("USER", user);
