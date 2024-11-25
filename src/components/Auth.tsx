@@ -21,9 +21,9 @@ export const Auth = ({ type }: { type: "signin" | "signup" }) => {
       );
       const token = response.data.jwt;
       const user = response.data.user;
-      console.log("user", user);
+      console.log("user", user.name);
 
-      localStorage.setItem("USER", JSON.stringify(user));
+      localStorage.setItem("USER", user);
       localStorage.setItem("JWT", token);
       navigate("/blogs");
     } catch (err) {

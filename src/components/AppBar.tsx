@@ -8,10 +8,7 @@ export const AppBar = () => {
     const userName = localStorage.getItem("USER");
 
     if (userName) {
-      const user = JSON.parse(userName);
-      console.log("username", user);
-
-      setName(user);
+      setName(userName);
     }
   }, []);
   return (
